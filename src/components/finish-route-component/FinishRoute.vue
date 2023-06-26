@@ -5,7 +5,7 @@
         <div class="container">
           <div class="row gx-5 border">
             <div>
-              <i class="icon"><img src="../../assets/check.png" alt="" /></i>
+              <i class="check-icon"><img src="../../assets/check.png" alt="" /></i>
               <span class="thank-you">Thank you for your order. Your payment was completed!</span>
             </div>
             <br />
@@ -33,6 +33,16 @@
             <span class="email-address">{{ $store.state.userData.email }}</span>
             for the order confirmation email (including spam/junk folder).
           </p>
+        </div>
+      </div>
+      <div class="back-to-shopping">
+        <div class="col-md-4">
+          <router-link to="/">
+            <a href="">
+              <i aria-hidden="true" class="arrow-icon"><img src="../../assets/back.png"></i>
+              <span class="locale">back to shopping</span>
+            </a>
+          </router-link>
         </div>
       </div>
       <br />
@@ -69,8 +79,22 @@ h4 {
   font-weight: 600;
 }
 
-img {
+.check-icon > img {
   height: 40px;
   padding-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.arrow-icon > img {
+  height: 40px;
+}
+.locale {
+  color: #6c6c6c;
+  font-weight: 600;
+  text-decoration: none;
 }
 </style>

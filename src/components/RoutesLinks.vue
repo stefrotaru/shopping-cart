@@ -4,11 +4,11 @@
       <p>{{ returnRoute() }}</p>
     </div>
     <ul class="routes-links">
-      <router-link class="individual-link nav-link pl-0" to="/" exact>Secure checkout</router-link>
+      <router-link class="individual-link nav-link pl-0" :class="{ disabled: 1 }" to="/" exact>Secure checkout</router-link>
       <p>></p>
-      <router-link class="individual-link nav-link pl-0" to="/review">Review</router-link>
+      <router-link class="individual-link nav-link pl-0" :class="{ disabled: 1 }" to="/review">Review</router-link>
       <p>></p>
-      <router-link class="individual-link nav-link pl-0" to="/finish">Finish</router-link>
+      <router-link class="individual-link nav-link pl-0" :class="{ disabled: 1 }" to="/finish">Finish</router-link>
     </ul>
   </div>
 </template>
@@ -33,7 +33,6 @@ export default {
 .routes-container {
   display: flex;
   justify-content: space-around;
-  margin-bottom: -25px;
 }
 
 .routes-title {
@@ -42,7 +41,6 @@ export default {
 
 .routes-links {
   display: flex;
-  justify-content: space-around;
 }
 
 .individual-link {
@@ -60,5 +58,19 @@ a {
 }
 .router-link-active {
   color: #0151ff;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+@media screen and (max-width: 720px) {
+  .routes-container {
+    flex-direction: column;
+  }
+
+  .routes-links {
+    justify-content: center;
+  }
 }
 </style>

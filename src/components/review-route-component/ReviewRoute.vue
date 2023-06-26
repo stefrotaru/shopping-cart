@@ -4,7 +4,9 @@
       <div class="content-inside">
         <div class="container">
           <div class="row gx-5 border">
-            <h4 class="order-summary-title">Order summary <a class="order-summary-edit" href="/">(edit)</a></h4>
+            <h4 class="order-summary-title">
+              Order summary <a class="order-summary-edit" href="/">(edit)</a>
+            </h4>
             <app-cartItem
               v-for="product in products"
               :key="product.id"
@@ -15,9 +17,13 @@
             <div class="checkout-div">
               <div class="checkout-button-div"></div>
               <div class="total-div">
-                <h4>{{ Math.round(totalPrice * 100) / 100 }} {{this.$store.state.exchangeCurrencySym}}</h4>
+                <h4>
+                  {{ Math.round(totalPrice * 100) / 100 }}
+                  {{ this.$store.state.exchangeCurrencySym }}
+                </h4>
                 <p>
-                  Includes 19% VAT ({{ Math.round(totalVat * 100) / 100 }} {{this.$store.state.exchangeCurrencySym}})
+                  Includes 19% VAT ({{ Math.round(totalVat * 100) / 100 }}
+                  {{ this.$store.state.exchangeCurrencySym }})
                 </p>
               </div>
             </div>
@@ -28,30 +34,46 @@
         <div class="row gx-5 border">
           <div class="col-md-6">
             <h4>Billing details</h4>
-            <hr>
+            <hr />
             <p>Email address: {{ $store.state.userData.email }}</p>
             <p>Country: {{ $store.state.userData.country }}</p>
-            <p v-if="!this.$store.state.isPersonal">Address: {{ $store.state.userData.address }}</p>
-            <p v-if="!this.$store.state.isPersonal">City: {{ $store.state.userData.city }}</p>
-            <p v-if="!this.$store.state.isPersonal">Zip / Postal code: {{ $store.state.userData.zipCode }}</p>
-            <p v-if="!this.$store.state.isPersonal">Company: {{ $store.state.userData.company }}</p>
-            <p v-if="!this.$store.state.isPersonal">VAT ID: {{ $store.state.userData.vatId }}</p>
-            <p v-if="!this.$store.state.isPersonal">Phone: {{ $store.state.userData.phoneNum }}</p>
+            <p v-if="!this.$store.state.isPersonal">
+              Address: {{ $store.state.userData.address }}
+            </p>
+            <p v-if="!this.$store.state.isPersonal">
+              City: {{ $store.state.userData.city }}
+            </p>
+            <p v-if="!this.$store.state.isPersonal">
+              Zip / Postal code: {{ $store.state.userData.zipCode }}
+            </p>
+            <p v-if="!this.$store.state.isPersonal">
+              Company: {{ $store.state.userData.company }}
+            </p>
+            <p v-if="!this.$store.state.isPersonal">
+              VAT ID: {{ $store.state.userData.vatId }}
+            </p>
+            <p v-if="!this.$store.state.isPersonal">
+              Phone: {{ $store.state.userData.phoneNum }}
+            </p>
           </div>
           <div class="col-md-6">
             <h4>Card details</h4>
-            <hr>
+            <hr />
             <p>Payment method: {{ $store.state.cardData.paymentMethod }}</p>
             <p>Card number: {{ $store.state.cardData.cardNum }}</p>
             <p>Expiration date: {{ $store.state.cardData.expirationDate }}</p>
             <p>Security code: {{ $store.state.cardData.securityCode }}</p>
             <p>Name on card: {{ $store.state.cardData.cardName }}</p>
           </div>
-          <hr>
-          <p v-if="this.$store.state.userData.subscribe">By placing this order, you are subscribing to our weekly newsletter!</p>
+          <hr />
+          <p v-if="this.$store.state.userData.subscribe">
+            By placing this order, you are subscribing to our weekly newsletter!
+          </p>
           <div class="place-order-div">
             <router-link to="/finish">
-                <button class="btn btn-success place-order-button">Place order</button>
+              <button class="btn btn-success place-order-button">
+                Place order
+              </button>
             </router-link>
           </div>
         </div>
@@ -149,10 +171,12 @@ a {
 }
 
 .place-order-button {
-    width: 20rem;
-    background-color: #11ca79;
-    border-color: transparent;
-    box-shadow: 0 6px 8px 0 rgb(17 202 121 / 25%);
+  width: 20rem;
+  background-color: #11ca79;
+  border-color: transparent;
+  box-shadow: 0 6px 8px 0 rgb(17 202 121 / 25%);
 }
-
+.place-order-button:hover {
+  background-color: #10ad69;
+}
 </style>

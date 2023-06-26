@@ -1,41 +1,44 @@
 <template>
-  <div class="navbar-container">
+  <div class="header-container">
     <nav class="navbar sticky-top bg-white">
-      <img id="header-logo" src="../assets/nero.png" alt="" />
+      <img id="header-logo" src="../assets/header-logo.png" alt="" />
       <div class="header-selectors-total-group">
         <div class="currency-dropdown">
-          <input
+          <select
+            id="currencies"
             class="header-dropdown"
-            list="currencies"
-            name="language-dropdown"
-            placeholder="RON"
+            name="currency-dropdown"
             v-model="currency"
-            @input="setExchangeCurrency(currency)"
-          />
-          <datalist id="currencies">
-            <option value="RON"></option>
-            <option value="USD"></option>
-            <option value="EUR"></option>
-            <option value="CAD"></option>
-            <option value="HUF"></option>
-          </datalist>
+            @change="
+              setExchangeCurrency(currency);
+              changeSym();
+              setCurrencyAsync(currency);
+            "
+          >
+            <option value="RON">RON</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="CAD">CAD</option>
+            <option value="HUF">HUF</option>
+          </select>
         </div>
         <div class="language-dropdown">
-          <input
+          <select
+            id="languages"
             class="header-dropdown"
             list="languages"
             name="language-dropdown"
-            placeholder="English"
-          />
-          <datalist id="languages">
+            v-model="selectedLanguage"
+          >
             <option v-for="language in languages" :key="language.name">
               {{ language.name }}
             </option>
-          </datalist>
+          </select>
         </div>
 
         <span class="navbar-brand navbar-price" href="#!"
-          >{{ Math.round(totalPrice * 100) / 100 }} {{this.$store.state.exchangeCurrencySym}}</span
+          >{{ Math.round(totalPrice * 100) / 100 }}
+          {{ this.$store.state.exchangeCurrencySym }}</span
         >
       </div>
     </nav>
@@ -51,14 +54,23 @@ export default {
   data() {
     return {
       languages: Languages,
-      currency: 'RON',
+      currency: "RON",
       symbols: currencySymbols,
-      currentSymbol: 'RON'
+      currentSymbol: "RON",
+      selectedLanguage: "English",
     };
   },
   methods: {
-    ...mapActions(["fetchCurrencyParams"]),
-    ...mapMutations(["setExchangeCurrency", "setExchangeCurrencySym"])
+    ...mapActions(["fetchCurrencyParams", "setCurrencyAsync"]),
+    ...mapMutations(["setExchangeCurrency", "setExchangeCurrencySym"]),
+    changeSym() {
+      for (var i = 0; i < this.symbols.length; i++) {
+        if (this.symbols[i].name == this.currency) {
+          this.currentSymbol = this.symbols[i].value;
+          this.setExchangeCurrencySym(this.currentSymbol);
+        }
+      }
+    },
   },
   computed: {
     products() {
@@ -70,31 +82,25 @@ export default {
     },
   },
   watch: {
-    currency: function() {
-      for (var i=0; i < this.symbols.length; i++) {
-        if (this.symbols[i].name == this.currency) {
-          this.currentSymbol = this.symbols[i].value;
-          this.setExchangeCurrencySym(this.currentSymbol)
-        }
-      }
-    },
+    // currency: function() {
+    //   this.fetchCurrencyParams()
+    // }
   },
   created() {
-    this.fetchCurrencyParams();
+    // this.fetchCurrencyParams();
   },
 };
 </script>
 
 <style scoped>
-.navbar-container {
+.header-container {
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 10px -3px grey;
 }
 
 .navbar {
-  width: 57%;
-  margin: auto;
+  margin: 0 2em;
 }
 
 .navbar-price {
@@ -108,6 +114,8 @@ export default {
 #header-logo {
   float: left;
   margin: 10px !important;
+  height: 50px;
+  width: auto;
 }
 
 .header-selectors-total-group {
@@ -118,18 +126,21 @@ export default {
   border: 2px solid grey;
   border-radius: 5px;
   margin: 5px;
-  width: 5rem;
+  width: 6rem;
   padding: 0 0 0 8px;
 }
 
 @media screen and (max-width: 720px) {
   .navbar {
-    width: 100%;
+    margin: 0 0.5em;
   }
-
   .navbar-price {
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  .header-selectors-total-group {
+    flex-direction: column;
   }
 }
 </style>

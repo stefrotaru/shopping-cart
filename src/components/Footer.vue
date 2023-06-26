@@ -1,26 +1,26 @@
 <template>
-  <div class="header-container">
+  <div class="footer-container">
     <div class="">
       <div class="upper-footer">
         <img
-          src="https://store.nero.com/checkout/themes/default/images/logos/2checkout-logo.svg"
+          src="../assets/lorem-ipsum-payments.png"
           class="logo"
         />
         <p id="footer_p">
-          Your payment is securely processed by <br />our partner, 2Checkout.<a
+          Your payment is securely processed by <br />our partner, Lorem Ipsum Payments.<a
             href="#"
-            >Who is 2Checkout?</a
+            >Who is Lorem Ipsum Payments?</a
           >
         </p>
       </div>
     </div>
-    <footer class="py-3 my-4">
+    <footer class="my-4">
       <p class="text-center text-muted">
-        Order processed by our payments partner 2Checkout.
+        Order processed by our payments partner Lorem Ipsum Payments.
       </p>
       <p class="text-center text-muted">
-        Verifone Payments BV dba 2Checkout | [Mail address: P.O. Box 11334, 1001
-        GH Amsterdam] Singel 250, 4th floor, Amsterdam, 1016AB, Netherlands
+        Lorem Ipsum Payments BV | [Mail address: P.O. Box 12345, 1001
+        GH Spain] Cerveza 250, 4th floor, Barcelona, 08016, Spain
       </p>
       <ul class="">
         <a href="#">Terms and conditions</a>
@@ -37,8 +37,9 @@ export default {};
 </script>
 
 <style scoped>
-.header-container {
+.footer-container {
   background-color: white;
+  font-size: .8em;
 }
 
 #footer_p {

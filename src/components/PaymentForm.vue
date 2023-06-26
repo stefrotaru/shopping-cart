@@ -9,8 +9,8 @@
         <br />
         <p v-if="this.$store.state.isPersonal">
           By placing the order you are confirming that you are over 16 years of
-          age and you agree with
-          <a href="/#">2Checkout’s terms and conditions.</a>
+          age and you agree with <br/>
+          <a href="/#">Lorem Ipsum Payments terms and conditions.</a>
         </p>
         <br />
         <div class="button-div">
@@ -50,6 +50,9 @@ export default {
     background-color: #11ca79;
     border-color: transparent;
     box-shadow: 0 6px 8px 0 rgb(17 202 121 / 25%);
+  }
+  .btn-success:hover {
+    background-color: #10ad69;
   }
   .row {
     background-color: white;

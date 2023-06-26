@@ -30,8 +30,7 @@ export const store = new Vuex.Store({
             phoneNum: ""
         },
         isPersonal: true,
-        currency: 'LEI',
-        currencySym: 'LEI',
+        currency: 'RON',
         exchangeCurrency: 'RON',
         exchangeCurrencySym: 'RON',
         exchangeRate: 0,
@@ -125,6 +124,10 @@ export const store = new Vuex.Store({
             state.userData.phoneNum = phoneNum
         },
 
+        setCurrencyAsyncMutation: (state, currency) => {
+            state.currency = currency
+        },
+
         setExchangeDetails: (state, payload) => {
             state.exchangeCurrency = payload.query.to;
             state.exchangeRate = payload.info.rate;
@@ -148,24 +151,29 @@ export const store = new Vuex.Store({
             context.commit('setIsPersonal', type)
         },
 
+        setCurrencyAsync(context, currency) {
+            setTimeout(() => {
+                context.commit('setCurrencyAsyncMutation', currency)
+            }, 1000)
+        },
 
-        // fetchCurrencyParams(context) {
-        //     var to = 'GBP';
-        //     var from = 'EUR';
-        //     var amount = 100;
-        //     var myHeaders = new Headers();
-        //     myHeaders.append("apikey", "2oFcu47MmdPQzQgRVsry4NagzaH984Yl");
+        fetchCurrencyParams(context) {
+            var to = context.exchangeCurrency;
+            var from = context.currency;
+            var amount = context.totalPrice;
+            var myHeaders = new Headers();
+            myHeaders.append("apikey", "2oFcu47MmdPQzQgRVsry4NagzaH984Yl");
 
-        //     var requestOptions = {
-        //         method: 'GET',
-        //         redirect: 'follow',
-        //         headers: myHeaders
-        //     };
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow',
+                headers: myHeaders
+            };
 
-        //     return fetch(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, requestOptions)
-        //         .then(response => response.json())
-        //         .then(result => context.commit('setExchangeDetails', result))
-        //         .catch(error => console.log('error', error))
-        // }
+            return fetch(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, requestOptions)
+                .then(response => response.json())
+                .then(result => context.commit('setExchangeDetails', result))
+                .catch(error => console.log('error', error))
+        }
     }
 })
