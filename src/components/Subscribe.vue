@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="row gx-5 border">
-          <span><input type="checkbox" v-model="subscribe" @click="setUserSubscription(!subscribe)" id="sub"/> Subscribe to the Nero newsletter now and enjoy exclusive benefits (1-2x per week)</span>
+          <span><input type="checkbox" v-model="subscribe" @click="setUserSubscription(!subscribe)" id="sub"/> Subscribe to our newsletter now and enjoy exclusive benefits (1-2x per week)</span>
       </div>
     </div>
 </template>

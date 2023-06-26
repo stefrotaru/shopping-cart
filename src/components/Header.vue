@@ -37,7 +37,7 @@
         </div>
 
         <span class="navbar-brand navbar-price" href="#!"
-          >{{ Math.round(totalPrice * 100) / 100 }}
+          >{{ ((totalPrice * 100) / 100).toFixed(2) }}
           {{ this.$store.state.exchangeCurrencySym }}</span
         >
       </div>

@@ -18,11 +18,11 @@
               <div class="checkout-button-div"></div>
               <div class="total-div">
                 <h4>
-                  {{ Math.round(totalPrice * 100) / 100 }}
+                  {{ ((totalPrice * 100) / 100).toFixed(2) }}
                   {{ this.$store.state.exchangeCurrencySym }}
                 </h4>
                 <p>
-                  Includes 19% VAT ({{ Math.round(totalVat * 100) / 100 }}
+                  Includes 19% VAT ({{ ((totalVat * 100) / 100).toFixed(2) }}
                   {{ this.$store.state.exchangeCurrencySym }})
                 </p>
               </div>

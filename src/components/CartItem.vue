@@ -4,7 +4,7 @@
       <div class="col-md-6">
         <div class="product-container">
           <img
-            src="https://store.nero.com/images/merchant/9cea886b9f44a3c2df1163730ab64994/products/copy_2_VL_maintenance.jpg"
+            src="../assets/copy_2_VL_maintenance.jpg"
           />
           <h4>{{ product.name }}</h4>
           <p class="product-description" v-if="this.$route.path == '/'">
@@ -49,15 +49,15 @@
                             <tbody>
                               <tr>
                                 <td>5-9</td>
-                                <td>$$$</td>
+                                <td>{{ (product.price * 5) }} {{ $store.state.exchangeCurrencySym }}</td>
                               </tr>
                               <tr>
                                 <td>10-49</td>
-                                <td>$$$</td>
+                                <td>{{ (product.price * 35) }} {{ $store.state.exchangeCurrencySym }}</td>
                               </tr>
                               <tr>
                                 <td>50-249</td>
-                                <td>$$$</td>
+                                <td>{{ (product.price * 125) }} {{ $store.state.exchangeCurrencySym }}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -144,24 +144,18 @@ export default {
     ...mapActions(["fetchUserOrder"]),
 
     incrementButton() {
-      let vat = Math.round(((19 / 100) * (this.product.price * 1 * 100)) / 100);
+      let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
       this.product.quantity++;
       this.$store.state.totalPrice += this.product.price + vat;
-      this.$store.state.totalVat += Math.round(
-        ((19 / 100) * (this.product.price * 100)) / 100
-      );
+      this.$store.state.totalVat += ((19 / 100) * (this.product.price * 100)) / 100;
     },
 
     decrementButton() {
       if (this.product.quantity > 1) {
-        let vat = Math.round(
-          ((19 / 100) * (this.product.price * 1 * 100)) / 100
-        );
+        let vat = (19 / 100) * (this.product.price * 1 * 100) / 100;
         this.product.quantity--;
         this.$store.state.totalPrice -= this.product.price + vat;
-        this.$store.state.totalVat -= Math.round(
-          ((19 / 100) * (this.product.price * 100)) / 100
-        );
+        this.$store.state.totalVat -= ((19 / 100) * (this.product.price * 100)) / 100;
       }
     },
 
@@ -171,10 +165,7 @@ export default {
       for (var y = 0; y <= store.state.cart.products.length; y++) {
         if (store.state.cart.products[y].id == i) {
           store.state.cart.products.splice(y, 1);
-          let vat = Math.round(
-            ((19 / 100) * (this.product.price * this.product.quantity * 100)) /
-              100
-          );
+          let vat = ((19 / 100) * (this.product.price * this.product.quantity * 100)) / 100;
           store.state.totalPrice -=
             this.product.price * this.product.quantity + vat;
           store.state.totalVat -= vat;

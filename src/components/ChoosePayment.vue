@@ -3,7 +3,7 @@
       <div class="row gx-5 border">
         <div>
         <h3>Pay securely with</h3>
-        <button class="btn">VISA [LOGO]</button>
+        <button class="btn">[CC LOGO]</button>
       </div>
       <div>
       </div>

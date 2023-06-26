@@ -42,7 +42,7 @@ export const store = new Vuex.Store({
             for (var i = 0; i <= payload.length; i++) {
                 if (payload.hasOwnProperty(i)) {
                     payload[i].quantity = 1;
-                    let vat = Math.round((19 / 100) * (payload[i].price * payload[i].quantity * 100) / 100);
+                    let vat = ((19 / 100) * (payload[i].price * payload[i].quantity * 100) / 100);
                     state.totalVat += vat;
                     state.totalPrice += payload[i].price + vat;
                 }
