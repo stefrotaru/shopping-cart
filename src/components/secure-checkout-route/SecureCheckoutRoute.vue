@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="content">
         <div class="content-inside">
           <app-cart-item-list></app-cart-item-list>
@@ -20,11 +20,11 @@
         </div>
       </div>
 
-      <div class="back-to-shopping">
+      <div>
         <div class="col-md-4">
-          <a href="">
+          <a href="#">
             <i aria-hidden="true" class="icon"><img src="../../assets/back.png"></i>
-            <span class="locale">back to shopping</span>
+            <span class="back-to-shopping">Back to website</span>
           </a>
         </div>
       </div>
@@ -49,13 +49,8 @@ export default {
 
 <style scoped>
 .back-to-shopping {
-  height: 5rem;
-}
-.locale {
   color: #6c6c6c;
   font-weight: 600;
-  display: flex;
-  justify-content: space-evenly;
   margin-top: 5px;
 }
 

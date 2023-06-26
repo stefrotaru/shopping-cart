@@ -1,46 +1,48 @@
 <template>
   <div>
-    <div class="content">
-      <div class="content-inside">
-        <div class="container">
-          <div class="row gx-5 border">
-            <div>
-              <i class="check-icon"><img src="../../assets/check.png" alt="" /></i>
-              <span class="thank-you">Thank you for your order. Your payment was completed!</span>
-            </div>
-            <br />
-            <br />
-            <hr />
-            <div class="col-md-6">
-              <h4>Order details</h4>
-              <p>Order number: {{$store.state.cart.orderNumber}}</p>
-              <p>Date: today</p>
-              <p>Total price: {{Math.round($store.state.totalPrice * 100) / 100}} {{this.$store.state.exchangeCurrencySym}}</p>
-            </div>
-            <div class="col-md-6">
-              <br />
-              <br />
-              <p>Payment method: {{$store.state.cardData.paymentMethod}}</p>
-              <p>Card number: {{ $store.state.cardData.cardNum }}</p>
-            </div>
-          </div>
+    <div class="container">
+      <div class="row gx-5 border">
+        <div>
+          <i class="check-icon"><img src="../../assets/check.png" alt=""/></i>
+          <span class="thank-you"
+            >Thank you for your order. Your payment was completed!</span
+          >
         </div>
-      </div>
-      <div class="container">
-        <div class="row gx-5 border">
+        <br />
+        <br />
+        <hr />
+        <div class="col-md-6">
+          <h4>Order details</h4>
+          <p>Order number: {{ $store.state.cart.orderNumber }}</p>
+          <p>Date: today</p>
           <p>
-            Please check
-            <span class="email-address">{{ $store.state.userData.email }}</span>
-            for the order confirmation email (including spam/junk folder).
+            Total price: {{ Math.round($store.state.totalPrice * 100) / 100 }}
+            {{ this.$store.state.exchangeCurrencySym }}
           </p>
         </div>
+        <div class="col-md-6">
+          <br />
+          <br />
+          <p>Payment method: {{ $store.state.cardData.paymentMethod }}</p>
+          <p>Card number: {{ $store.state.cardData.cardNum }}</p>
+        </div>
+      </div>
+
+      <div class="row gx-5 border">
+        <p>
+          Please check
+          <span class="email-address">{{ $store.state.userData.email }}</span>
+          for the order confirmation email (including spam/junk folder).
+        </p>
       </div>
       <div class="back-to-shopping">
         <div class="col-md-4">
           <router-link to="/">
             <a href="">
-              <i aria-hidden="true" class="arrow-icon"><img src="../../assets/back.png"></i>
-              <span class="locale">back to shopping</span>
+              <i aria-hidden="true" class="arrow-icon"
+                ><img src="../../assets/back.png"
+              /></i>
+              <span class="back-to-shopping">back to shopping</span>
             </a>
           </router-link>
         </div>
@@ -55,9 +57,7 @@ export default {};
 </script>
 
 <style scoped>
-#col-md-6 {
-  text-align: left;
-}
+
 .row {
   background-color: white;
   border-radius: 10px;
@@ -92,7 +92,7 @@ a {
 .arrow-icon > img {
   height: 40px;
 }
-.locale {
+.back-to-shopping {
   color: #6c6c6c;
   font-weight: 600;
   text-decoration: none;

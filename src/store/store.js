@@ -57,7 +57,7 @@ export const store = new Vuex.Store({
                 state.isPersonal = false;
             }
             
-            console.log(state.isPersonal)
+            // console.log(state.isPersonal)
             // return state.isPersonal = !state.isPersonal;
         },
 
@@ -162,7 +162,7 @@ export const store = new Vuex.Store({
             var from = context.currency;
             var amount = context.totalPrice;
             var myHeaders = new Headers();
-            myHeaders.append("apikey", "2oFcu47MmdPQzQgRVsry4NagzaH984Yl");
+            myHeaders.append("apikey", "DEH9i39DTMgyapbDgAcQIOfOIGG6b6ox");
 
             var requestOptions = {
                 method: 'GET',

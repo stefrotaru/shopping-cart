@@ -7,9 +7,8 @@
         :product="product"
       ></app-cartItem>
       <hr />
-      <div class="checkout-div">
-        <div class="checkout-button-div"></div>
-        <div class="total-div">
+      <div>
+        <div class="total-container">
           <button
             class="coupon-button"
             type="button"
@@ -44,8 +43,16 @@
               </button>
             </div>
           </div>
-          <h4>{{ Math.round(totalPrice * 100) / 100 }} {{this.$store.state.exchangeCurrencySym}}</h4>
-          <p>Includes 19% VAT ({{ Math.round(totalVat * 100) / 100 }} {{this.$store.state.exchangeCurrencySym}})</p>
+          <div class="total">
+            <h4>
+              {{ Math.round(totalPrice * 100) / 100 }}
+              {{ this.$store.state.exchangeCurrencySym }}
+            </h4>
+            <p>
+              Includes 19% VAT ({{ Math.round(totalVat * 100) / 100 }}
+              {{ this.$store.state.exchangeCurrencySym }})
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -60,7 +67,7 @@ export default {
   data() {
     return {
       coupon: false,
-      couponCode: "",
+      couponCode: ""
     };
   },
 
@@ -69,11 +76,11 @@ export default {
     ...mapMutations(["setUserCoupon", "setDiscount"]),
     couponToggle() {
       this.coupon = !this.coupon;
-    },
+    }
   },
 
   components: {
-    "app-cartItem": CartItem,
+    "app-cartItem": CartItem
   },
 
   computed: {
@@ -87,15 +94,15 @@ export default {
 
     totalVat() {
       return this.$store.state.totalVat;
-    },
+    }
   },
 
   watch: {
-    couponCode: function () {
+    couponCode: function() {
       if (this.couponCode == "DISC10") {
         return this.setDiscount(10);
       }
-    },
+    }
   },
 
   created() {
@@ -104,14 +111,14 @@ export default {
     } else {
       return;
     }
-  },
+  }
 };
 </script>
 
 <style scoped>
 hr {
   opacity: 1;
-  color: #adb5bd
+  color: #adb5bd;
 }
 .row {
   background-color: white;
@@ -131,9 +138,11 @@ hr {
   padding-top: 10px;
 }
 
-.total-div {
+.total-container {
   text-align: end;
 }
+
+.total {}
 
 .routes-container {
   display: flex;
@@ -166,5 +175,15 @@ a {
 }
 .showCouponInput {
   display: none;
+}
+
+@media (max-width: 574px) {
+  .coupon-button {
+    text-align: start;
+  }
+  .total-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

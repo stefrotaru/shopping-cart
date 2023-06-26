@@ -18,6 +18,9 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  margin-top: 2rem;
+}
 .row {
     background-color: white;
     border-radius: 10px;

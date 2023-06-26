@@ -40,6 +40,7 @@ export default {};
 .footer-container {
   background-color: white;
   font-size: .8em;
+  text-align: center;
 }
 
 #footer_p {

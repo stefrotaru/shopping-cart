@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="row gx-5 border">
-      <div class="col-md-6">
+      <div class="order-form col-md-6">
         <app-order-form></app-order-form>
       </div>
-      <div class="col-md-6">
+      <div class="card-details col-md-6">
         <app-card-details></app-card-details>
         <br />
         <p v-if="this.$store.state.isPersonal">
@@ -42,8 +42,13 @@ export default {
 </script>
 
 <style scoped>
-  .col-md-6 {
+  .order-form {
     display: inline-grid;
+    text-align: center;
+  }
+
+  .card-details {
+    text-align: center;
   }
 
   .btn-success {

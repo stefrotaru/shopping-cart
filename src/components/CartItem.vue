@@ -1,17 +1,21 @@
 <template>
   <div class="container">
-    <div class="row gx-5">
+    <div class="row gx-0">
       <div class="col-md-6">
         <div class="product-container">
           <img
             src="https://store.nero.com/images/merchant/9cea886b9f44a3c2df1163730ab64994/products/copy_2_VL_maintenance.jpg"
           />
           <h4>{{ product.name }}</h4>
-          <p class="product-description" v-if="this.$route.path == '/'">{{ product.description }}</p>
-          <a class="volume-discounts-link" 
-             @click="modal = true" 
-             v-if="this.$route.path == '/'"
-             >Volume discounts</a>
+          <p class="product-description" v-if="this.$route.path == '/'">
+            {{ product.description }}
+          </p>
+          <a
+            class="volume-discounts-link"
+            @click="modal = true"
+            v-if="this.$route.path == '/'"
+            >Volume discounts</a
+          >
 
           <transition name="modal" v-if="modal">
             <div class="modal-mask">
@@ -23,38 +27,42 @@
 
                   <div class="modal-body">
                     <slot name="body">
-
-                        <div class="row modal-row">
-                          <div class="col-lg-12">
-                            <h5>1 Year Maintenance Nero Backitup Volume License - autorenewal</h5>
-                            <h6>We offer volume discount prices for this product, as displayed below.</h6>
-                          </div>
-                          <div class="col-lg-12">
-                            <table class="table table-hover table-condensed">
-                              <thead>
-                                <tr>
-                                  <th>Quantity</th>
-                                  <th>Unit price</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>5-9</td>
-                                  <td>$$$</td>
-                                </tr>
-                                <tr>
-                                  <td>10-49</td>
-                                  <td>$$$</td>
-                                </tr>
-                                <tr>
-                                  <td>50-249</td>
-                                  <td>$$$</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
+                      <div class="row modal-row">
+                        <div class="col-lg-12">
+                          <h5>
+                            1 Year Maintenance Nero Backitup Volume License -
+                            autorenewal
+                          </h5>
+                          <h6>
+                            We offer volume discount prices for this product, as
+                            displayed below.
+                          </h6>
                         </div>
-                      
+                        <div class="col-lg-12">
+                          <table class="table table-hover table-condensed">
+                            <thead>
+                              <tr>
+                                <th>Quantity</th>
+                                <th>Unit price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>5-9</td>
+                                <td>$$$</td>
+                              </tr>
+                              <tr>
+                                <td>10-49</td>
+                                <td>$$$</td>
+                              </tr>
+                              <tr>
+                                <td>50-249</td>
+                                <td>$$$</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </slot>
                   </div>
 
@@ -74,7 +82,7 @@
           </transition>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="product_price col-md-6">
         <div class="item-counter">
           <button
             class="btn btn-light"
@@ -103,14 +111,14 @@
         <div class="subtotal">
           <span class="price-bold">
             {{ Math.round(product.price * product.quantity * 100) / 100 }}
-            {{this.$store.state.exchangeCurrencySym}}</span
+            {{ this.$store.state.exchangeCurrencySym }}</span
           >
           <button
             class="btn btn-danger"
             v-on:click="removeButton"
             v-if="this.$route.path == '/'"
           >
-            Remove
+            <img src="../assets/icons8-trash-24.png" alt="">
           </button>
         </div>
       </div>
@@ -125,11 +133,10 @@ import { store } from "../store/store";
 export default {
   data() {
     return {
-      modal: false,
+      modal: false
     };
   },
-  components: {
-  },
+  components: {},
   props: ["product"],
   methods: {
     ...mapMutations(["removeItem"]),
@@ -174,27 +181,22 @@ export default {
           return;
         }
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-.g-5, .gx-5 {
-    --bs-gutter-x: 0;
-}
-
 h4 {
   clear: both;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 h4,
 p {
   text-align: left;
-  
 }
 
 img {
@@ -230,15 +232,15 @@ input {
 }
 
 a {
-  color: #3474ff
+  color: #3474ff;
 }
 
 .volume-discounts-link {
   color: #3474ff;
   text-decoration: none;
-  cursor: pointer
+  cursor: pointer;
 }
-/* Modal styling down here */
+/* Modal styling */
 .modal-mask {
   position: fixed;
   z-index: 5;
@@ -279,7 +281,7 @@ a {
 }
 
 .modal-row {
-  margin-left: 0
+  margin-left: 0;
 }
 
 .modal-default-button {
@@ -303,5 +305,17 @@ a {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+  .product_price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-container {
+    width: 90%;
+  }
 }
 </style>

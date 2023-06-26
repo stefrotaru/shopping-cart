@@ -55,7 +55,7 @@ export default {
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   background-color: #f2f2f2;
   color: #2c3e50;
   height: 100%;
@@ -69,13 +69,6 @@ h2 {
 
 .row {
   padding: 15px;
-}
-
-.content {
-  min-height: 100%;
-}
-.content-inside {
-  padding-bottom: 10px;
 }
 
 .header {
