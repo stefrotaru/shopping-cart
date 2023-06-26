@@ -26,7 +26,6 @@
 <script>
 import BillingDetails from "./BillingDetails.vue";
 import CardDetails from "./CardDetails.vue";
-import { store } from "../store/store";
 
 export default {
   components: {
@@ -62,5 +61,11 @@ export default {
   .row {
     background-color: white;
     border-radius: 10px;
+  }
+
+  @media (max-width: 767px) {
+    .card-details {
+      padding-top: 2rem;
+    }
   }
 </style>

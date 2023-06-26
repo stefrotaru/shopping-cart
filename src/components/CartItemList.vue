@@ -45,11 +45,12 @@
           </div>
           <div class="total">
             <h4>
-              {{ Math.round(totalPrice * 100) / 100 }}
-              {{ this.$store.state.exchangeCurrencySym }}
+              <!-- {{ Math.round(totalPrice * 100) / 100 }}
+              {{ this.$store.state.exchangeCurrencySym }} -->
+              {{ this.$store.state.totalPrice.toFixed(2) + ' ' + this.$store.state.exchangeCurrencySym}}
             </h4>
             <p>
-              Includes 19% VAT ({{ Math.round(totalVat * 100) / 100 }}
+              Includes 19% VAT ({{ (totalVat * this.$store.state.exchangeRate).toFixed(2) }}
               {{ this.$store.state.exchangeCurrencySym }})
             </p>
           </div>
@@ -106,6 +107,8 @@ export default {
   },
 
   created() {
+    // console.log()
+
     if (this.$store.state.cart.products.length == 0) {
       return this.fetchUserOrder();
     } else {

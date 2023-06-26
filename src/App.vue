@@ -25,6 +25,7 @@ import ChoosePayment from "./components/ChoosePayment.vue";
 import Subscribe from "./components/Subscribe.vue";
 import { store } from "./store/store";
 
+
 export default {
   name: "app",
   components: {

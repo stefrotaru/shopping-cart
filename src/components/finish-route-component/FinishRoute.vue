@@ -57,7 +57,9 @@ export default {};
 </script>
 
 <style scoped>
-
+.container { 
+  text-align: center;
+}
 .row {
   background-color: white;
   border-radius: 10px;
@@ -93,6 +95,7 @@ a {
   height: 40px;
 }
 .back-to-shopping {
+  text-align: start;
   color: #6c6c6c;
   font-weight: 600;
   text-decoration: none;

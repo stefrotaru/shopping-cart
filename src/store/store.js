@@ -33,7 +33,7 @@ export const store = new Vuex.Store({
         currency: 'RON',
         exchangeCurrency: 'RON',
         exchangeCurrencySym: 'RON',
-        exchangeRate: 0,
+        exchangeRate: 1,
         totalPrice: 0,
         totalVat: 0
     },
@@ -131,6 +131,7 @@ export const store = new Vuex.Store({
         setExchangeDetails: (state, payload) => {
             state.exchangeCurrency = payload.query.to;
             state.exchangeRate = payload.info.rate;
+            state.totalPrice = state.totalPrice * payload.info.rate;
             console.log('payload', payload)
         }
     },
@@ -158,21 +159,23 @@ export const store = new Vuex.Store({
         },
 
         fetchCurrencyParams(context) {
-            var to = context.exchangeCurrency;
-            var from = context.currency;
-            var amount = context.totalPrice;
+            var to = context.state.exchangeCurrency;
+            var from = context.state.currency;
+            var amount = context.state.totalPrice;
             var myHeaders = new Headers();
             myHeaders.append("apikey", "DEH9i39DTMgyapbDgAcQIOfOIGG6b6ox");
 
+            console.log(amount)
             var requestOptions = {
                 method: 'GET',
                 redirect: 'follow',
                 headers: myHeaders
             };
 
-            return fetch(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, requestOptions)
+            return fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${to}&from=${from}&amount=${amount}`, requestOptions)
                 .then(response => response.json())
                 .then(result => context.commit('setExchangeDetails', result))
+                // .then(result => console.log(result))
                 .catch(error => console.log('error', error))
         }
     }

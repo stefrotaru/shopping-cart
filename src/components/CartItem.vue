@@ -110,7 +110,7 @@
         </div>
         <div class="subtotal">
           <span class="price-bold">
-            {{ Math.round(product.price * product.quantity * 100) / 100 }}
+            {{ ((product.price * product.quantity) * this.$store.state.exchangeRate).toFixed(2) }}
             {{ this.$store.state.exchangeCurrencySym }}</span
           >
           <button

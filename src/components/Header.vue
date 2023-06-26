@@ -82,12 +82,12 @@ export default {
     },
   },
   watch: {
-    // currency: function() {
-    //   this.fetchCurrencyParams()
-    // }
+    currentSymbol: function() {
+      this.fetchCurrencyParams()
+    }
   },
   created() {
-    // this.fetchCurrencyParams();
+    // this.fetchCurrencyParams(this.$store.state);
   },
 };
 </script>
