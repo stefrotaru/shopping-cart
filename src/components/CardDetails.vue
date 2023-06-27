@@ -16,7 +16,7 @@
       <div class="form-group">
         <br />
         <input
-          type="text"
+          type="date"
           class="form-control"
           id="form-expirationDate"
           placeholder="Expiration date*"

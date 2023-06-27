@@ -2,15 +2,10 @@
   <div class="footer-container">
     <div class="">
       <div class="upper-footer">
-        <img
-          src="../assets/lorem-ipsum-payments.png"
-          class="logo"
-        />
+        <img src="../assets/lorem-ipsum-payments.png" class="logo" />
         <p id="footer_p">
-          Your payment is securely processed by <br />our partner, Lorem Ipsum Payments.<a
-            href="#"
-            >Who is Lorem Ipsum Payments?</a
-          >
+          Your payment is securely processed by <br />
+          Lorem Ipsum Payments.<a href="#">Who is Lorem Ipsum Payments?</a>
         </p>
       </div>
     </div>
@@ -19,8 +14,8 @@
         Order processed by our payments partner Lorem Ipsum Payments.
       </p>
       <p class="text-center text-muted">
-        Lorem Ipsum Payments BV | [Mail address: P.O. Box 12345, 1001
-        GH Spain] Cerveza 250, 4th floor, Barcelona, 08016, Spain
+        Lorem Ipsum Payments BV | [Mail address: P.O. Box 12345, 54321 GH Spain]
+        Cerveza 152, 6th floor, Barcelona, 08016, Spain
       </p>
       <ul class="">
         <a href="#">Terms and conditions</a>
@@ -39,7 +34,7 @@ export default {};
 <style scoped>
 .footer-container {
   background-color: white;
-  font-size: .8em;
+  font-size: 0.8em;
   text-align: center;
 }
 

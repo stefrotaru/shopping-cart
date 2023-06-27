@@ -15,7 +15,7 @@
         <br />
         <div class="button-div">
           <router-link to="/review">
-            <button class="btn btn-success" type="submit">Continue to review</button>
+            <button class="btn btn-success" type="submit" form="#billing-details-form">Continue to review</button>
           </router-link>
         </div>
       </div>

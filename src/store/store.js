@@ -100,7 +100,9 @@ export const store = new Vuex.Store({
             state.userData.subscribe = sub
         },
         setUserDataEmail: (state, email) => {
-            state.userData.email = email
+            if (email !== '') {
+                state.userData.email = email
+            }
         },
         setUserDataCountry: (state, country) => {
             state.userData.country = country
@@ -142,7 +144,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchUserOrder(context) {
-            return fetch('https://private-32dcc-products72.apiary-mock.com/product')
+            return fetch('https://mocki.io/v1/02dbe737-5010-44be-bcc8-cdf40ca68457')
                 .then(res => res.json())
                 .then(data => context.commit("setUserOrder", data))
                 .catch(err => console.log(err))
