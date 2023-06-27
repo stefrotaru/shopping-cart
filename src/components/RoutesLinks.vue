@@ -4,11 +4,27 @@
       <p>{{ returnRoute() }}</p>
     </div>
     <ul class="routes-links">
-      <router-link class="individual-link nav-link pl-0" :class="{ disabled: 1 }" to="/" exact>Secure checkout</router-link>
+      <router-link
+        class="individual-link nav-link pl-0"
+        :class="{ disabled: 1 }"
+        to="/"
+        exact
+        >Secure checkout</router-link
+      >
       <p>></p>
-      <router-link class="individual-link nav-link pl-0" :class="{ disabled: 1 }" to="/review">Review</router-link>
+      <router-link
+        class="individual-link nav-link pl-0"
+        :class="{ disabled: 1 }"
+        to="/review"
+        >Review</router-link
+      >
       <p>></p>
-      <router-link class="individual-link nav-link pl-0" :class="{ disabled: 1 }" to="/finish">Finish</router-link>
+      <router-link
+        class="individual-link nav-link pl-0"
+        :class="{ disabled: 1 }"
+        to="/finish"
+        >Finish</router-link
+      >
     </ul>
   </div>
 </template>
@@ -17,12 +33,12 @@
 export default {
   methods: {
     returnRoute() {
-      if (this.$route.path == '/') {
-        return 'Secure Checkout'
-      } else if (this.$route.path == '/review') {
-        return 'Review'
-      } else if (this.$route.path == '/finish') {
-        return 'Finish'
+      if (this.$route.path == "/") {
+        return "Secure Checkout";
+      } else if (this.$route.path == "/review") {
+        return "Review";
+      } else if (this.$route.path == "/finish") {
+        return "Finish";
       }
     }
   }
@@ -61,7 +77,7 @@ a {
 }
 
 .disabled {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 720px) {

@@ -57,7 +57,7 @@ export default {
       currency: "RON",
       symbols: currencySymbols,
       currentSymbol: "RON",
-      selectedLanguage: "English",
+      selectedLanguage: "English"
     };
   },
   methods: {
@@ -70,7 +70,7 @@ export default {
           this.setExchangeCurrencySym(this.currentSymbol);
         }
       }
-    },
+    }
   },
   computed: {
     products() {
@@ -79,16 +79,16 @@ export default {
 
     totalPrice() {
       return this.$store.state.totalPrice;
-    },
+    }
   },
   watch: {
     currentSymbol: function() {
-      this.fetchCurrencyParams()
+      this.fetchCurrencyParams();
     }
   },
   created() {
     // this.fetchCurrencyParams(this.$store.state);
-  },
+  }
 };
 </script>
 

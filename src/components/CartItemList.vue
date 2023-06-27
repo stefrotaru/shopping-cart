@@ -45,10 +45,16 @@
           </div>
           <div class="total">
             <h4>
-              {{ this.$store.state.totalPrice.toFixed(2) + ' ' + this.$store.state.exchangeCurrencySym}}
+              {{
+                this.$store.state.totalPrice.toFixed(2) +
+                  " " +
+                  this.$store.state.exchangeCurrencySym
+              }}
             </h4>
             <p>
-              Includes 19% VAT ({{ (totalVat * this.$store.state.exchangeRate).toFixed(2) }}
+              Includes 19% VAT ({{
+                (totalVat * this.$store.state.exchangeRate).toFixed(2)
+              }}
               {{ this.$store.state.exchangeCurrencySym }})
             </p>
           </div>
@@ -140,8 +146,6 @@ hr {
 .total-container {
   text-align: end;
 }
-
-.total {}
 
 .routes-container {
   display: flex;

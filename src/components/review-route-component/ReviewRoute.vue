@@ -93,11 +93,11 @@ export default {
   },
 
   methods: {
-    ...mapActions(["fetchUserOrder"]),
+    ...mapActions(["fetchUserOrder"])
   },
 
   components: {
-    "app-cartItem": CartItem,
+    "app-cartItem": CartItem
   },
 
   computed: {
@@ -111,8 +111,8 @@ export default {
 
     totalVat() {
       return this.$store.state.totalVat;
-    },
-  },
+    }
+  }
 };
 </script>
 

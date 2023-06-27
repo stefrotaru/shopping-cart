@@ -3,9 +3,7 @@
     <div class="row gx-0">
       <div class="col-md-6">
         <div class="product-container">
-          <img
-            src="../assets/copy_2_VL_maintenance.jpg"
-          />
+          <img src="../assets/copy_2_VL_maintenance.jpg" />
           <h4>{{ product.name }}</h4>
           <p class="product-description" v-if="this.$route.path == '/'">
             {{ product.description }}
@@ -49,15 +47,24 @@
                             <tbody>
                               <tr>
                                 <td>5-9</td>
-                                <td>{{ (product.price * 5) }} {{ $store.state.exchangeCurrencySym }}</td>
+                                <td>
+                                  {{ product.price * 5 }}
+                                  {{ $store.state.exchangeCurrencySym }}
+                                </td>
                               </tr>
                               <tr>
                                 <td>10-49</td>
-                                <td>{{ (product.price * 35) }} {{ $store.state.exchangeCurrencySym }}</td>
+                                <td>
+                                  {{ product.price * 35 }}
+                                  {{ $store.state.exchangeCurrencySym }}
+                                </td>
                               </tr>
                               <tr>
                                 <td>50-249</td>
-                                <td>{{ (product.price * 125) }} {{ $store.state.exchangeCurrencySym }}</td>
+                                <td>
+                                  {{ product.price * 125 }}
+                                  {{ $store.state.exchangeCurrencySym }}
+                                </td>
                               </tr>
                             </tbody>
                           </table>
@@ -110,7 +117,13 @@
         </div>
         <div class="subtotal">
           <span class="price-bold">
-            {{ ((product.price * product.quantity) * this.$store.state.exchangeRate).toFixed(2) }}
+            {{
+              (
+                product.price *
+                product.quantity *
+                this.$store.state.exchangeRate
+              ).toFixed(2)
+            }}
             {{ this.$store.state.exchangeCurrencySym }}</span
           >
           <button
@@ -118,7 +131,7 @@
             v-on:click="removeButton"
             v-if="this.$route.path == '/'"
           >
-            <img src="../assets/icons8-trash-24.png" alt="">
+            <img src="../assets/icons8-trash-24.png" alt="" />
           </button>
         </div>
       </div>
@@ -147,15 +160,17 @@ export default {
       let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
       this.product.quantity++;
       this.$store.state.totalPrice += this.product.price + vat;
-      this.$store.state.totalVat += ((19 / 100) * (this.product.price * 100)) / 100;
+      this.$store.state.totalVat +=
+        ((19 / 100) * (this.product.price * 100)) / 100;
     },
 
     decrementButton() {
       if (this.product.quantity > 1) {
-        let vat = (19 / 100) * (this.product.price * 1 * 100) / 100;
+        let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
         this.product.quantity--;
         this.$store.state.totalPrice -= this.product.price + vat;
-        this.$store.state.totalVat -= ((19 / 100) * (this.product.price * 100)) / 100;
+        this.$store.state.totalVat -=
+          ((19 / 100) * (this.product.price * 100)) / 100;
       }
     },
 
@@ -165,7 +180,9 @@ export default {
       for (var y = 0; y <= store.state.cart.products.length; y++) {
         if (store.state.cart.products[y].id == i) {
           store.state.cart.products.splice(y, 1);
-          let vat = ((19 / 100) * (this.product.price * this.product.quantity * 100)) / 100;
+          let vat =
+            ((19 / 100) * (this.product.price * this.product.quantity * 100)) /
+            100;
           store.state.totalPrice -=
             this.product.price * this.product.quantity + vat;
           store.state.totalVat -= vat;

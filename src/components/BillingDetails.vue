@@ -19,15 +19,18 @@
       </button>
     </div>
     <form id="billing-details-form">
-      <div class="form-group email">
+      <div class="form-group">
         <label for="email"></label>
         <input
           type="email"
           class="form-control"
+          :class="{ 'is-invalid': this.$store.state.form.isInvalidEmail }"
           id="email"
           placeholder="Email address*"
           v-model="userData.email"
           @input="setUserDataEmail(userData.email)"
+          @focus="setIsInvalidEmail()"
+          @keyup="setIsInvalidEmail()"
         />
       </div>
       <br />
@@ -112,7 +115,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from "vuex";
+import { mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "order-form",
@@ -126,7 +129,7 @@ export default {
         zipCode: "",
         company: "",
         vatId: "",
-        phoneNum: "",
+        phoneNum: ""
       },
       countries: [
         { id: 1, name: "Romania" },
@@ -134,8 +137,8 @@ export default {
         { id: 3, name: "Germany" },
         { id: 4, name: "Netherlands" },
         { id: 5, name: "Italy" },
-        { id: 6, name: "Spain" },
-      ],
+        { id: 6, name: "Spain" }
+      ]
     };
   },
   methods: {
@@ -149,12 +152,15 @@ export default {
       "setUserDataCompany",
       "setUserDataVat",
       "setUserDataPhoneNum",
+
+      "setIsInvalidEmail"
     ]),
     ...mapActions(["setPersonal"]),
     setIsPersonal(type) {
       this.setPersonal(type);
     },
-  },
+    ...mapGetters(["getEmail"])
+  }
 };
 </script>
 

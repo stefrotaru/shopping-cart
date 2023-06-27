@@ -16,7 +16,8 @@
           <p>Order number: {{ $store.state.cart.orderNumber }}</p>
           <p>Date: today</p>
           <p>
-            Total price: {{ (($store.state.totalPrice * 100) / 100).toFixed(2) }}
+            Total price:
+            {{ (($store.state.totalPrice * 100) / 100).toFixed(2) }}
             {{ this.$store.state.exchangeCurrencySym }}
           </p>
         </div>
@@ -57,7 +58,7 @@ export default {};
 </script>
 
 <style scoped>
-.container { 
+.container {
   text-align: center;
 }
 .row {
