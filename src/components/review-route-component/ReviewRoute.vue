@@ -5,7 +5,7 @@
         <div class="container">
           <div class="row gx-5 border">
             <h4 class="order-summary-title">
-              Order summary <a class="order-summary-edit" href="/">(edit)</a>
+              Order summary <a class="order-summary-edit" href="/shopping-cart/">(edit)</a>
             </h4>
             <app-cartItem
               v-for="product in products"
@@ -70,7 +70,7 @@
             By placing this order, you are subscribing to our weekly newsletter!
           </p>
           <div class="place-order-div">
-            <router-link to="/finish">
+            <router-link to="/shopping-cart/finish">
               <button class="btn btn-success place-order-button">
                 Place order
               </button>

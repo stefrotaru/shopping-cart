@@ -7,7 +7,7 @@
       <router-link
         class="individual-link nav-link pl-0"
         :class="{ disabled: 1 }"
-        to="/"
+        to="/shopping-cart/"
         exact
         >Secure checkout</router-link
       >
@@ -15,14 +15,14 @@
       <router-link
         class="individual-link nav-link pl-0"
         :class="{ disabled: 1 }"
-        to="/review"
+        to="/shopping-cart/review"
         >Review</router-link
       >
       <p>></p>
       <router-link
         class="individual-link nav-link pl-0"
         :class="{ disabled: 1 }"
-        to="/finish"
+        to="/shopping-cart/finish"
         >Finish</router-link
       >
     </ul>
@@ -33,11 +33,11 @@
 export default {
   methods: {
     returnRoute() {
-      if (this.$route.path == "/") {
+      if (this.$route.path == "/shopping-cart/") {
         return "Secure Checkout";
-      } else if (this.$route.path == "/review") {
+      } else if (this.$route.path == "/shopping-cart/review") {
         return "Review";
-      } else if (this.$route.path == "/finish") {
+      } else if (this.$route.path == "/shopping-cart/finish") {
         return "Finish";
       }
     }

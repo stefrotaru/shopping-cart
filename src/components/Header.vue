@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <nav class="navbar sticky-top bg-white">
-      <img id="header-logo" src="../assets/header-logo.png" alt="" />
+      <img id="header-logo" src="../public/header-logo.png" alt="" />
       <div class="header-selectors-total-group">
         <div class="currency-dropdown">
           <select

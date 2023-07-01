@@ -51,7 +51,7 @@ export default {
 
     continueToReview() {
       if (this.$store.state.form.isValidForm && this.$store.state.userData !== '' && this.$store.state.cardData.cardNum !== '' && this.$store.state.cardData.expirationDate !== '' && this.$store.state.cardData.securityCode !== '' && this.$store.state.cardData.cardName !== '') {
-        this.$router.push("review");
+        this.$router.push("/shopping-cart/review");
       }
     }
   }

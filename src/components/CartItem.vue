@@ -3,15 +3,15 @@
     <div class="row gx-0">
       <div class="col-md-6">
         <div class="product-container">
-          <img src="../assets/copy_2_VL_maintenance.jpg" />
+          <img src="../public/copy_2_VL_maintenance.jpg" />
           <h4>{{ product.name }}</h4>
-          <p class="product-description" v-if="this.$route.path == '/'">
+          <p class="product-description" v-if="this.$route.path == '/shopping-cart/'">
             {{ product.description }}
           </p>
           <a
             class="volume-discounts-link"
             @click="modal = true"
-            v-if="this.$route.path == '/'"
+            v-if="this.$route.path == '/shopping-cart/'"
             >Volume discounts</a
           >
 
@@ -94,7 +94,7 @@
           <button
             class="btn btn-light"
             @click="decrementButton"
-            v-if="this.$route.path == '/'"
+            v-if="this.$route.path == '/shopping-cart/'"
           >
             -
           </button>
@@ -102,15 +102,15 @@
             class=""
             type="text"
             :value="product.quantity"
-            v-if="this.$route.path == '/'"
+            v-if="this.$route.path == '/shopping-cart/'"
           />
-          <span v-if="this.$route.path == '/review'"
+          <span v-if="this.$route.path == '/shopping-cart/review'"
             >Quantity: {{ product.quantity }}</span
           >
           <button
             class="btn btn-light"
             @click="incrementButton"
-            v-if="this.$route.path == '/'"
+            v-if="this.$route.path == '/shopping-cart/'"
           >
             +
           </button>
@@ -129,9 +129,9 @@
           <button
             class="btn btn-danger"
             v-on:click="removeButton"
-            v-if="this.$route.path == '/'"
+            v-if="this.$route.path == '/shopping-cart/'"
           >
-            <img src="../assets/icons8-trash-24.png" alt="" />
+            <img src="../public/icons8-trash-24.png" alt="" />
           </button>
         </div>
       </div>

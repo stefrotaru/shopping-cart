@@ -2,7 +2,7 @@
   <div class="footer-container">
     <div class="">
       <div class="upper-footer">
-        <img src="../assets/lorem-ipsum-payments.png" class="logo" />
+        <img src="../public/lorem-ipsum-payments.png" class="logo" />
         <p id="footer_p">
           Your payment is securely processed by <br />
           Lorem Ipsum Payments.<a href="#">Who is Lorem Ipsum Payments?</a>

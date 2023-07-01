@@ -24,7 +24,7 @@
       <div class="col-md-4">
         <a href="#">
           <i aria-hidden="true" class="icon"
-            ><img src="../../assets/back.png"
+            ><img src="../../public/back.png"
           /></i>
           <span class="back-to-shopping">Back to website</span>
         </a>

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row gx-5 border">
         <div>
-          <i class="check-icon"><img src="../../assets/check.png" alt=""/></i>
+          <i class="check-icon"><img src="../../public/check.png" alt=""/></i>
           <span class="thank-you"
             >Thank you for your order. Your payment was completed!</span
           >
@@ -38,10 +38,10 @@
       </div>
       <div class="back-to-shopping">
         <div class="col-md-4">
-          <router-link to="/">
+          <router-link to="/shopping-cart/">
             <a href="">
               <i aria-hidden="true" class="arrow-icon"
-                ><img src="../../assets/back.png"
+                ><img src="../../public/back.png"
               /></i>
               <span class="back-to-shopping">back to shopping</span>
             </a>
