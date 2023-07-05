@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="card">
     <div class="row gx-5 border">
       <div>
         <h3>Pay securely with</h3>
@@ -15,7 +15,7 @@ export default {};
 </script>
 
 <style scoped>
-.container {
+.card {
   margin-top: 2rem;
 }
 .row {

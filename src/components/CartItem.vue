@@ -3,15 +3,15 @@
     <div class="row gx-0">
       <div class="col-md-6">
         <div class="product-container">
-          <img src="../public/copy_2_VL_maintenance.jpg" />
+          <img :src="prodImg" />
           <h4>{{ product.name }}</h4>
-          <p class="product-description" v-if="this.$route.path == '/shopping-cart/'">
+          <p class="product-description" v-if="this.$route.path === '/shopping-cart/'">
             {{ product.description }}
           </p>
           <a
             class="volume-discounts-link"
             @click="modal = true"
-            v-if="this.$route.path == '/shopping-cart/'"
+            v-if="this.$route.path === '/shopping-cart/'"
             >Volume discounts</a
           >
 
@@ -28,13 +28,9 @@
                       <div class="row modal-row">
                         <div class="col-lg-12">
                           <h5>
-                            1 Year Maintenance Nero Backitup Volume License -
-                            autorenewal
-                          </h5>
-                          <h6>
                             We offer volume discount prices for this product, as
                             displayed below.
-                          </h6>
+                          </h5>
                         </div>
                         <div class="col-lg-12">
                           <table class="table table-hover table-condensed">
@@ -131,7 +127,7 @@
             v-on:click="removeButton"
             v-if="this.$route.path == '/shopping-cart/'"
           >
-            <img src="../public/icons8-trash-24.png" alt="" />
+            <img :src="trashIcon" alt="" />
           </button>
         </div>
       </div>
@@ -143,10 +139,15 @@
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import { store } from "../store/store";
 
+import prodImg from "../public/copy_2_VL_maintenance.jpg";
+import trashIcon from "../public/icons8-trash-24.png";
+
 export default {
   data() {
     return {
-      modal: false
+      modal: false,
+      prodImg: prodImg,
+      trashIcon: trashIcon,
     };
   },
   components: {},

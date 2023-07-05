@@ -86,9 +86,7 @@ export default {
       this.fetchCurrencyParams();
     }
   },
-  created() {
-    // this.fetchCurrencyParams(this.$store.state);
-  }
+  created() { }
 };
 </script>
 

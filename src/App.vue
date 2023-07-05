@@ -56,7 +56,6 @@ export default {
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   background-color: #f2f2f2;
   color: #2c3e50;
   height: 100%;
@@ -76,21 +75,4 @@ h2 {
   position: sticky;
   top: 0;
 }
-
-/* @media screen and (min-width: 800px) {
-  #app {
-    font-size: 20px;
-  }
-
-  .container, .container-md, .container-sm {
-    max-width: 100vh;
-    padding-left: 0px;
-  }
-} */
-
-/* @media screen and (min-width: 700px) {
-  .container {
-    margin-left: -20px;
-  }
-} */
 </style>
