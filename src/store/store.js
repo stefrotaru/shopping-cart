@@ -9,14 +9,14 @@ export const store = new Vuex.Store({
     cart: {
       products: [],
       userCoupon: "",
-      orderNumber: "#52976"
+      orderNumber: "#52976",
     },
     cardData: {
       paymentMethod: "VISA",
       cardNum: "",
       expirationDate: "",
       securityCode: "",
-      cardName: ""
+      cardName: "",
     },
     userData: {
       subscribe: false,
@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
       zipCode: "",
       company: "",
       vatId: "",
-      phoneNum: ""
+      phoneNum: "",
     },
     form: {
       isInvalidCardNum: false,
@@ -36,15 +36,16 @@ export const store = new Vuex.Store({
       isInvalidCardName: false,
       isInvalidEmail: false,
 
-      isValidForm: false
+      isValidForm: false,
     },
     isPersonal: true,
     currency: "RON",
     exchangeCurrency: "RON",
     exchangeCurrencySym: "RON",
     exchangeRate: 1,
+    subtotal: 0,
+    totalVat: 0,
     totalPrice: 0,
-    totalVat: 0
   },
   mutations: {
     setUserOrder: (state, payload) => {
@@ -54,6 +55,7 @@ export const store = new Vuex.Store({
           let vat =
             ((19 / 100) * (payload[i].price * payload[i].quantity * 100)) / 100;
           state.totalVat += vat;
+          state.subtotal += payload[i].price;
           state.totalPrice += payload[i].price + vat;
         }
       }

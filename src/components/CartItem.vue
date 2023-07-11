@@ -160,18 +160,20 @@ export default {
     incrementButton() {
       let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
       this.product.quantity++;
-      this.$store.state.totalPrice += this.product.price + vat;
       this.$store.state.totalVat +=
         ((19 / 100) * (this.product.price * 100)) / 100;
+      this.$store.state.subtotal += this.product.price;
+      this.$store.state.totalPrice += this.product.price + vat;
     },
 
     decrementButton() {
       if (this.product.quantity > 1) {
         let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
         this.product.quantity--;
-        this.$store.state.totalPrice -= this.product.price + vat;
         this.$store.state.totalVat -=
-          ((19 / 100) * (this.product.price * 100)) / 100;
+        ((19 / 100) * (this.product.price * 100)) / 100;
+        this.$store.state.subtotal -= this.product.price;
+        this.$store.state.totalPrice -= this.product.price + vat;
       }
     },
 

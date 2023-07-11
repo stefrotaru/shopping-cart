@@ -8,7 +8,7 @@
       ></app-cartItem>
       <hr />
       <div>
-        <div class="total-container">
+        <div class="">
           <button
             class="coupon-button"
             type="button"
@@ -43,20 +43,32 @@
               </button>
             </div>
           </div>
-          <div class="total">
-            <h4>
-              {{
-                this.$store.state.totalPrice.toFixed(2) +
-                  " " +
-                  this.$store.state.exchangeCurrencySym
-              }}
-            </h4>
-            <p>
-              Includes 19% VAT ({{
-                (totalVat * this.$store.state.exchangeRate).toFixed(2)
-              }}
-              {{ this.$store.state.exchangeCurrencySym }})
-            </p>
+          <div class="total d-flex flex-column justify-content-end">
+
+            <div class="bill_subtotal d-flex justify-content-end">
+              <p class="">Subtotal:&nbsp;</p>
+              <span class="">
+                {{ this.$store.state.subtotal }}
+                {{ this.$store.state.exchangeCurrencySym }}
+              </span>  
+            </div>
+
+            <div class="bill_vat d-flex justify-content-end">
+              <p class="">VAT (19%):&nbsp;</p>
+              <span class="">
+                {{ (totalVat * this.$store.state.exchangeRate).toFixed(2) }}
+                {{ this.$store.state.exchangeCurrencySym }}
+              </span>
+            </div>
+
+            <div class="bill_total d-flex justify-content-end">
+              <h4 class="">Total:&nbsp;</h4>
+              <h4>
+                {{ this.$store.state.totalPrice.toFixed(2) }}
+                {{ this.$store.state.exchangeCurrencySym }}
+              </h4>
+            </div>
+
           </div>
         </div>
       </div>
@@ -137,14 +149,13 @@ hr {
   background: none;
   margin-top: 20px;
 }
+.coupon-button:hover {
+  color: #3474ff;
+}
 
 .form-group {
   float: left;
   padding-top: 10px;
-}
-
-.total-container {
-  text-align: end;
 }
 
 .routes-container {
