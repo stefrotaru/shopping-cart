@@ -5,7 +5,10 @@
         <div class="product-container">
           <img :src="prodImg" />
           <h4>{{ product.name }}</h4>
-          <p class="product-description" v-if="this.$route.path === '/shopping-cart/'">
+          <p
+            class="product-description"
+            v-if="this.$route.path === '/shopping-cart/'"
+          >
             {{ product.description }}
           </p>
           <a
@@ -44,22 +47,31 @@
                               <tr>
                                 <td>5-9</td>
                                 <td>
-                                  {{ product.price * 5 }}
-                                  {{ $store.state.exchangeCurrencySym }}
+                                  {{
+                                    new Intl.NumberFormat("en-US", { maximumFractionDigits: 2,  style: 'currency', currency: $store.state.exchangeCurrency }).format(
+                                      (product.price * 5) * $store.state.exchangeRate
+                                    )
+                                  }}
                                 </td>
                               </tr>
                               <tr>
                                 <td>10-49</td>
                                 <td>
-                                  {{ product.price * 35 }}
-                                  {{ $store.state.exchangeCurrencySym }}
+                                  {{
+                                    new Intl.NumberFormat("en-US", { maximumFractionDigits: 2,  style: 'currency', currency: $store.state.exchangeCurrency }).format(
+                                      (product.price * 35) * $store.state.exchangeRate
+                                    )
+                                  }}
                                 </td>
                               </tr>
                               <tr>
                                 <td>50-249</td>
                                 <td>
-                                  {{ product.price * 125 }}
-                                  {{ $store.state.exchangeCurrencySym }}
+                                  {{
+                                    new Intl.NumberFormat("en-US", { maximumFractionDigits: 2,  style: 'currency', currency: $store.state.exchangeCurrency }).format(
+                                      (product.price * 125) * $store.state.exchangeRate
+                                    )
+                                  }}
                                 </td>
                               </tr>
                             </tbody>
@@ -114,14 +126,14 @@
         <div class="subtotal">
           <span class="price-bold">
             {{
-              (
+              new Intl.NumberFormat("en-US", {  maximumFractionDigits: 2,  style: 'currency', currency: this.$store.state.exchangeCurrency }).format(
                 product.price *
                 product.quantity *
                 this.$store.state.exchangeRate
-              ).toFixed(2)
+              )
             }}
-            {{ this.$store.state.exchangeCurrencySym }}</span
-          >
+            <!-- {{ this.$store.state.exchangeCurrencySym }} -->
+          </span>
           <button
             class="btn btn-danger"
             v-on:click="removeButton"
@@ -147,7 +159,7 @@ export default {
     return {
       modal: false,
       prodImg: prodImg,
-      trashIcon: trashIcon,
+      trashIcon: trashIcon
     };
   },
   components: {},
@@ -161,9 +173,9 @@ export default {
       let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
       this.product.quantity++;
       this.$store.state.totalVat +=
-        ((19 / 100) * (this.product.price * 100)) / 100;
-      this.$store.state.subtotal += this.product.price;
-      this.$store.state.totalPrice += this.product.price + vat;
+        (((19 / 100) * (this.product.price * 100)) / 100) * this.$store.state.exchangeRate;
+      this.$store.state.subtotal += this.product.price * this.$store.state.exchangeRate;
+      this.$store.state.totalPrice += (this.product.price * this.$store.state.exchangeRate) + (vat * this.$store.state.exchangeRate);
     },
 
     decrementButton() {
@@ -171,24 +183,25 @@ export default {
         let vat = ((19 / 100) * (this.product.price * 1 * 100)) / 100;
         this.product.quantity--;
         this.$store.state.totalVat -=
-        ((19 / 100) * (this.product.price * 100)) / 100;
-        this.$store.state.subtotal -= this.product.price;
-        this.$store.state.totalPrice -= this.product.price + vat;
+          (((19 / 100) * (this.product.price * 100)) / 100) * this.$store.state.exchangeRate;
+        this.$store.state.subtotal -= this.product.price * this.$store.state.exchangeRate;
+        this.$store.state.totalPrice -= (this.product.price * this.$store.state.exchangeRate) + (vat * this.$store.state.exchangeRate);
       }
     },
 
     removeButton() {
       let i = this.product.id;
 
-      for (var y = 0; y <= store.state.cart.products.length; y++) {
-        if (store.state.cart.products[y].id == i) {
-          store.state.cart.products.splice(y, 1);
+      for (var y = 0; y <= this.$store.state.cart.products.length; y++) {
+        if (this.$store.state.cart.products[y].id == i) {
+          this.$store.state.cart.products.splice(y, 1);
           let vat =
             ((19 / 100) * (this.product.price * this.product.quantity * 100)) /
             100;
-          store.state.totalPrice -=
-            this.product.price * this.product.quantity + vat;
-          store.state.totalVat -= vat;
+          this.$store.state.totalVat -= vat * this.$store.state.exchangeRate;
+          this.$store.state.subtotal -= this.product.price * this.product.quantity * this.$store.state.exchangeRate;
+          this.$store.state.totalPrice -=
+            (this.product.price * this.product.quantity * this.$store.state.exchangeRate) + (vat * this.$store.state.exchangeRate);
           return;
         }
       }

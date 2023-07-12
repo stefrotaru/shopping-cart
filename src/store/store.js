@@ -141,7 +141,11 @@ export const store = new Vuex.Store({
     setExchangeDetails: (state, payload) => {
       state.exchangeCurrency = payload.query.to;
       state.exchangeRate = payload.info.rate;
+      
+      state.subtotal = state.subtotal * payload.info.rate;
       state.totalPrice = state.totalPrice * payload.info.rate;
+      state.totalVat = state.totalVat * payload.info.rate;
+
       console.log("payload", payload);
     },
 
@@ -196,7 +200,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     fetchUserOrder(context) {
-      return fetch("https://mocki.io/v1/f9928282-8949-4c9c-98a0-76d8eaf97375")
+      return fetch("https://mocki.io/v1/e8426c96-ba45-451f-88d0-056cc112813e")
         .then(res => res.json())
         .then(data => context.commit("setUserOrder", data))
         .catch(err => console.log(err));

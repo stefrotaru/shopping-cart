@@ -48,24 +48,21 @@
             <div class="bill_subtotal d-flex justify-content-end">
               <p class="">Subtotal:&nbsp;</p>
               <span class="">
-                {{ this.$store.state.subtotal }}
-                {{ this.$store.state.exchangeCurrencySym }}
+                {{ new Intl.NumberFormat('en-US', {  maximumFractionDigits: 2,  style: 'currency', currency: this.$store.state.exchangeCurrency, signDisplay: 'never' }).format(this.$store.state.subtotal) }}
               </span>  
             </div>
 
             <div class="bill_vat d-flex justify-content-end">
               <p class="">VAT (19%):&nbsp;</p>
               <span class="">
-                {{ (totalVat * this.$store.state.exchangeRate).toFixed(2) }}
-                {{ this.$store.state.exchangeCurrencySym }}
+                {{ new Intl.NumberFormat('en-US', {  maximumFractionDigits: 2,  style: 'currency', currency: this.$store.state.exchangeCurrency, signDisplay: 'never' }).format(totalVat) }}
               </span>
             </div>
 
             <div class="bill_total d-flex justify-content-end">
               <h4 class="">Total:&nbsp;</h4>
               <h4>
-                {{ this.$store.state.totalPrice.toFixed(2) }}
-                {{ this.$store.state.exchangeCurrencySym }}
+                {{ new Intl.NumberFormat('en-US', {  maximumFractionDigits: 2,  style: 'currency', currency: this.$store.state.exchangeCurrency, signDisplay: 'never' }).format(this.$store.state.totalPrice) }}
               </h4>
             </div>
 

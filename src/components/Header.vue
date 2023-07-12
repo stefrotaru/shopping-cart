@@ -36,10 +36,14 @@
           </select>
         </div>
 
-        <span class="navbar-brand navbar-price" href="#!"
-          >{{ ((totalPrice * 100) / 100).toFixed(2) }}
-          {{ this.$store.state.exchangeCurrencySym }}</span
-        >
+        <span class="navbar-brand navbar-price">{{
+          new Intl.NumberFormat("en-US", {
+            maximumFractionDigits: 2,
+            style: "currency",
+            currency: this.$store.state.exchangeCurrency,
+            signDisplay: "never"
+          }).format(this.$store.state.totalPrice)
+        }}</span>
       </div>
     </nav>
   </div>
@@ -86,7 +90,7 @@ export default {
       this.fetchCurrencyParams();
     }
   },
-  created() { }
+  created() {}
 };
 </script>
 

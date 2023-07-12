@@ -9,7 +9,7 @@
         :class="{ disabled: 1 }"
         to="/shopping-cart/"
         exact
-        >Secure checkout</router-link
+        >Checkout</router-link
       >
       <p>></p>
       <router-link
@@ -34,7 +34,7 @@ export default {
   methods: {
     returnRoute() {
       if (this.$route.path == "/shopping-cart/") {
-        return "Secure Checkout";
+        return "Checkout";
       } else if (this.$route.path == "/shopping-cart/review") {
         return "Review";
       } else if (this.$route.path == "/shopping-cart/finish") {
